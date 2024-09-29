@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignasi Tormo Blanch | Machine Learning & AI Expert</title>
+
+    <!-- Fuentes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    
+    <!-- Estilos generales -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000, #333333);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 10s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background: linear-gradient(135deg, #000000, #333333); }
+            100% { background: linear-gradient(135deg, #333333, #000000); }
+        }
+
+        header h1 {
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #303030;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #28a745;
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        section {
+            padding: 100px 40px;
+            margin: 40px auto;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #000000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: #28a745;
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-item h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+            color: #000000;
+        }
+
+        .project-item p {
+            padding: 0 15px 20px;
+            color: #555;
+        }
+
+        .skills, .experience, .education {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .skills ul, .experience ul, .education ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills li, .experience li, .education li {
+            margin-bottom: 10px;
+        }
+
+        .contact-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botón flotante de contacto */
+        .float-contact-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .float-contact-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Parallax background */
+        section#projects {
+            background: url('https://source.unsplash.com/random/1600x900') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* AOS animations */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
+            transition-duration: 1s;
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        #about p {
+        text-align: justify;
+        }
+    </style>
+
+    <!-- Librerías de AOS y FontAwesome -->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Sección Hero -->
+    <header>
+        <img src="C:\Users\34644\Desktop\1727161774682.jpg" alt="Yo" style="width: 1400px; height: auto; margin-right: 10px;">
+        <h1>Ignasi Tormo Blanch</h1>
+        <p>Matemática computacional Universitat Jaume I</p>
+        <nav>
+            <a href="#about">Sobre mí</a>
+            <a href="#experience">Experiencia</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#education">Educación</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Sección Sobre mí -->
+    <section id="about">
+        <h2>Sobre mí</h2>
+        <p>¡Hola a todos! Soy Ignasi Tormo Blanch, tengo 21 años y desde los 16 he estado profundamente apasionado por la innovación, especialmente en el ámbito de la inteligencia artificial y el aprendizaje automático. Mi curiosidad y entusiasmo por la tecnología me han llevado a estudiar un Grado en Matemáticas Computacionales en la Universitat Jaume I, donde he logrado destacar académicamente.</p>
+        <p>Actualmente, tengo la suerte de trabajar como Investigador Colaborador en la misma universidad. En este rol, me dedico a explorar cómo la inteligencia artificial puede mejorar la interacción humana, aplicando técnicas de machine learning para el procesamiento de imágenes.</p>
+        <p>Soy una persona extrovertida y amable, y disfruto trabajando en equipo. Mi obsesión por el trabajo me impulsa a dar lo mejor de mí en cada proyecto. Además, valoro mucho el tiempo que paso haciendo deporte, ya que me ayuda a mantener un equilibrio saludable y una mentalidad enfocada.</p>
+        <p>Me encanta aprender y constantemente busco nuevas oportunidades para adquirir conocimientos. Uno de mis hobbies es estudiar inversiones y entender cómo funcionan los negocios, lo que me permite desarrollar una perspectiva más amplia sobre el impacto de la tecnología en el mundo empresarial.</p>
+        <p>Siempre estoy buscando nuevas maneras de aplicar mis habilidades y conocimientos para crear soluciones significativas en el campo de la tecnología. Si estás interesado en colaborar o simplemente quieres charlar sobre innovación, tecnología, negocios o deportes, no dudes en contactarme. Estoy siempre abierto a nuevas oportunidades y desafíos que me permitan seguir creciendo profesionalmente.</p>
+        <p>¡Gracias por escucharme!</p>
+    </section>
+
+    <!-- Sección Experiencia -->
+    <section id="experience" data-aos="fade-up">
+        <h2>Experiencia Profesional</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <!-- Reemplazar la imagen por un iframe que carga la página web -->
+                <iframe src="https://ia3research.github.io/index.html" width="100%" height="200" style="border:0;" title="IA3 Research"></iframe>
+                <!-- Título con enlace a la web -->
+                <h3>
+                    <a href="https://ia3research.github.io/index.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        Investigador Colaborador - Universitat Jaume I (2024 - Presente)
+                    </a>
+                </h3>
+                <p>Investigación en IA avanzada para mejorar la interacción y el procesamiento de imágenes.</p>
+            </div>
+            <div class="project-item">
+                <!-- Reemplazar por un iframe de YouTube -->
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/C5jEiC8Ct8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h3><strong>Fundador - Fashionpetstore (2023 - 2024):</strong></h3>
+                <p>Creación de una tienda en línea especializada en productos para mascotas, desarrollo de la web y estrategias de marketing digital para impulsar las ventas.</p>
+                
+                <!-- Iconos de Instagram y YouTube -->
+                <div style="margin-top: 10px;">
+                    <a href="https://www.instagram.com/fashionpetstores?utm_source=ig_web_button_share_sheet&igshid=ZDNlZDc0MzIxNw==" target="_blank" style="margin-right: 10px;">
+                        <i class="fab fa-instagram" style="font-size: 24px; color: #E1306C;"></i>
+                    </a>
+                    <a href="https://youtube.com/@fashionpetstores?si=GWv7G8a12XUkBnwA" target="_blank">
+                        <i class="fab fa-youtube" style="font-size: 24px; color: #FF0000;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Sección Proyectos Destacados -->
+    <section id="projects" data-aos="fade-up">
+        <h2>Proyectos Destacados</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <img src="C:\Users\34644\Desktop\practicas_y_tfg\premio_libropersonalizado.jpeg" alt="Proyecto de libros personalizados" class="project-img">
+                <h3>Creación Automática de Libros Personalizados Usando IA</h3>
+                <p>Premio por la innovación y la aplicación de Machine Learning para generar contenido personalizado.</p>
+            </div>
+            <div class="project-item">
+                <img src="C:\Users\34644\Desktop\practicas_y_tfg\clasifimagen.JPEG" alt="Proyecto de clasificación de imagenes" class="project-img">
+                <h3>Sistema de Clasificación de Imagenes</h3>
+                <p>Desarrollo de un sistema de IA para clasificar imagenes utilizando técnicas avanzadas de visión por computadora.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="skills">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills">
+            <ul>
+                <li><strong>Lenguajes de programación:</strong> Python, R, C++</li>
+                <li><strong>Machine Learning:</strong> Modelado predictivo, procesamiento de imágenes, redes neuronales</li>
+                <li><strong>Deep Learning:</strong> Redes neuronales convolucionales (CNN), Procesamiento de Lenguaje Natural (NLP)</li>
+                <li><strong>Otros:</strong> Git, Docker, Linux, APIs</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Sección Formación Académica -->
+    <section id="education" data-aos="fade-up">
+        <h2>Formación Académica</h2>
+        <div class="education">
+            <ul>
+                <li><strong>Grado en Matemáticas Computacionales - Universitat Jaume I (2021 - Presente):</strong> Primero de mi promoción y contando con 12 Matrículas de Honor</li>
+                <li><strong>Machine Learning y Deep Learning - Coursera (2024):</strong> Cursos certificados que me proporcionaron habilidades avanzadas en IA.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contact" data-aos="fade-up">
+        <h2>Contacto</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensaje" required></textarea>
+            <button type="submit" class="contact-btn">Enviar</button>
+        </form>
+        <p>O también puedes escribirme a <a href="mailto:al416720@uji.es">al416720@uji.es</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ignasi Tormo Blanch | <a href="#contact">Contáctame</a></p>
+        <div>
+            <a href="https://www.linkedin.com/in/ignasi-tormo" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/ignasi-tormo" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de contacto -->
+    <a href="mailto:al416720@uji.es" class="float-contact-btn">📧</a>
+
+    <!-- Inicialización de AOS -->
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
